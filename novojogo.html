@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type="text/css" href="./assets/css/argon.css?v=1.0.1" rel="stylesheet">
+<script language="JavaScript"> 
+var pontos=0; 
+function reponse(form) { 
+for (var i=0;i<form.length;i++){ 
+ if (form[i].checked){ 
+  break 
+ } 
+} 
+var answer="" 
+if (i<form.length){ 
+ answer = form[i].value 
+} 
+return answer; 
+} 
+
+function solution(form) { 
+/* variável para cada pergunta */
+var points=0;var rep="";var comment="";var resposta1="";var resposta2="";var resposta3="";var onome=""
+
+/* valor de pontos para as questões */
+if (reponse(form.question1)=="C") {pontos+=1} 
+if (reponse(form.question2)=="A") {pontos+=1} 
+if (reponse(form.question3)=="B") {pontos+=1} 
+
+/* cada mensagem vai de acordo com o input marcado para resposta */
+
+/* mensagem para questão 1 */
+if (reponse(form.question1)=="") {resposta1="<font color=#cccccc>não respondida</font>"} 
+if (reponse(form.question1)=="A") {resposta1="<font color=#cccccc>incorreta</font>"} 
+if (reponse(form.question1)=="B") {resposta1="<font color=#cccccc>incorreta</font>"}
+if (reponse(form.question1)=="C") {resposta1="<font color=#0099cc>correta</font>"}
+
+/* mensagem para questão 2 */
+if (reponse(form.question2)=="") {resposta2="<font color=#cccccc>não respondida</font>"} 
+if (reponse(form.question2)=="A") {resposta2="<font color=#0099cc>correta</font>"} 
+if (reponse(form.question2)=="B") {resposta2="<font color=#cccccc>incorreta</font>"}
+if (reponse(form.question2)=="C") {resposta2="<font color=#cccccc>incorreta</font>"}
+
+/* mensagem para questão 3 */
+if (reponse(form.question3)=="") {resposta3="<font color=#cccccc>não respondida</font>"} 
+if (reponse(form.question3)=="A") {resposta3="<font color=#cccccc>incorreta</font>"} 
+if (reponse(form.question3)=="B") {resposta3="<font color=#0099cc>correta</font>"}
+if (reponse(form.question3)=="C") {resposta3="<font color=#cccccc>incorreta</font>"}
+
+/* aqui é exibido a mensagem de acordo com o ponto marcado */
+if (pontos==0) {comment="você não fez pontos, tente novamente"}
+if (pontos==1) {comment="você fez um ponto, continue assim"}
+if (pontos==2) {comment="você fez 2 pontos, está quase lá"}
+if (pontos==3) {comment="excelente! você acertou todas!<br><br><a href=\"javascript:;\" onClick=\"window.print();return false\">Imprimir este certificado</a><br>codigo do nível:cód_f.03_difícil<br><br> ?2018-trabalhodesilvio.ml"}
+
+/* aqui exibo a porcentagem de acordo com o ponto  */
+if (pontos==0) {porcentagem="0%"}
+if (pontos==1) {porcentagem="33%"}
+if (pontos==2) {porcentagem="66%"}
+if (pontos==3) {porcentagem="100%"}
+
+/* aqui inicio o código mostrado na nova janela */
+chaine='' 
++'<head><title>Resultado</title>'
++'<style type=text/css>a{font-family:arial;font-size:8pt;color:#696969;text-decoration:none;}#texto{font-family:verdana,arial;font-size:8pt;color:#696969;}#textos{font-family:verdana,arial;font-size:10px;color:#c7c7c7;}input{border:1px solid #f8f8f8;background-color:fefefe;font-family:arial;font-size:8pt;color:#1c1c1c;}#resultado{font-family:arial;font-size:8pt;color:#696969;}</style>'
++'</head>'
++'<center><font id=texto>Você atingiu um total de <font color=#0099cc><b>'+ pontos +'</b></font> pontos, acertando '+ porcentagem +' das questões.<br><br><font color=#696969>'+comment+'<BR>' 
+
++'<br><center><font id=texto>'+ formmail.onome.value +' veja abaixo o resumo das questões:</font></center><br>'
+
++'<table border=0 cellpading=3 cellspacing=3 style="border:1px solid #f8f8f8;background-color:#ffffff;" width="150">'
++"<tr><td><font id=textos>1)</td><td><font id=resultado>"+ resposta1 +"</font></td></tr>"
++"<tr><td><font id=textos>2)</td><td><font id=resultado>"+ resposta2 +"</font></td></tr>"
++"<tr><td><font id=textos>3)</td><td><font id=resultado>"+ resposta3 +"</font></td></tr>"
++"</table></form>"
++'<a href="javascript:void(0)" onclick="javascript:window.close()">FECHAR</a>'
++'</CENTER></BODY></HTML>' 
+solu=open(); 
+solu.document.write(chaine) 
+} 
+//
+</script> 
+<script>
+function vai() {
+location.reload()
+}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.accordion {
+  background-color: #eee;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border-color: black;
+  outline: none;
+  font-size: 15px;
+  text-align: left;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+.col-md{
+width: 50%;
+float:left;
+
+}
+
+.numerobilhete{
+color:red;
+text-align: right;
+}
+
+.addjogo{
+text-align: right;
+}
+
+</style>
+</head>
+<body>
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+<h2>Bilhetes</h2><br/>
+<input class="btn btn-primary" type="button" value="Voltar" onClick="history.go(-1)"> 
+<input class="btn btn-primary" type="button" value="Refazer Jogo" onClick="history.go(0)"><br/><br/>
+
+<button class="accordion">
+<div class="col-md">
+ <img src="http://www.aribemotos.com.br/assets/honda2w/thumbs/modelos/487.jpg"/>
+</div>
+<div class="col-md"><div class="numerobilhete">N&#186; 7256</div>
+
+<b>Pr&ecirc;mio:</b>Cg Honda Starter<br><b>Valor:</b>7.000R$<br><b>Sorteio:</b>19:00
+<br>
+
+<div class="addjogo">
+<label>Adicionar:<input type="checkbox" name="ch[]" value="3,00" /></label>
+
+
+</div>
+</div>
+</button>
+
+
+<button class="accordion">
+<div class="col-md">
+ <img src="http://www.aribemotos.com.br/assets/honda2w/thumbs/modelos/322.jpg"/>
+</div>
+<div class="col-md"><div class="numerobilhete">N&#186; 7158</div>
+
+<b>Pr&ecirc;mio:</b>Honda Biz 125<br><b>Valor:</b>11.000R$<br><b>Sorteio:</b>19:00
+<br>
+
+<div class="addjogo">
+<label>Adicionar:<input type="checkbox" name="ch[]" value="3,00" /></label>
+
+
+
+</div>
+</div>
+</button>
+
+<button class="accordion">
+<div class="col-md">
+ <img src="http://www.aribemotos.com.br/assets/honda2w/thumbs/modelos/438.jpg"/>
+</div>
+<div class="col-md"><div class="numerobilhete">N&#186; 7561</div>
+
+<b>Pr&ecirc;mio:</b>CG Titan 160<br><b>Valor:</b>12.000R$<br><b>Sorteio:</b>19:00
+<br>
+
+<div class="addjogo">
+<label>Adicionar:<input type="checkbox" name="ch[]" value="3,00" /></label>
+
+
+
+</div>
+</div>
+</button>
+<br>
+<br>
+<label>Total de apostas: <input type="text" name="result" id="result" value="R$ 0,00" /></label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="btn btn-primary" type="button" value="Confirmar">
+<input class="btn btn-primary" type="button" onClick="history.go(0)" value="Refazer jogo">
+
+<script>
+String.prototype.formatMoney = function() {
+    var v = this;
+
+    if(v.indexOf('.') === -1) {
+        v = v.replace(/([\d]+)/, "$1,00");
+    }
+
+    v = v.replace(/([\d]+)\.([\d]{1})$/, "$1,$20");
+    v = v.replace(/([\d]+)\.([\d]{2})$/, "$1,$2");
+    v = v.replace(/([\d]+)([\d]{3}),([\d]{2})$/, "$1.$2,$3");
+
+    return v;
+};
+String.prototype.toFloat = function() {
+    var v = this;
+
+    if (!v) return 0;
+    return parseFloat(v.replace(/[\D]+/g, '' ).replace(/([\d]+)(\d{2})$/, "$1.$2"));
+};
+(function(){
+    "use strict";
+
+    var $chs = document.querySelectorAll('input[name="ch[]"]'),
+        $result = document.getElementById('result'),
+        chsArray = Array.prototype.slice.call($chs);
+
+    chsArray.forEach(function(element, index, array){
+        element.addEventListener("click", function(){
+            var v = this.value,
+                result = 0;
+            v = v.toFloat();
+
+            if (this.checked === true) {
+                result = $result.value.toFloat() + parseFloat(v);
+            } else {
+                result = $result.value.toFloat() - parseFloat(v);
+            }
+
+            $result.value = "R$ " + String(result).formatMoney();
+        });
+    });
+
+
+}());
+</script>
+<br/><br/><br/>
+</body>
+</html>
+
+
+
+
+
+
+
+
